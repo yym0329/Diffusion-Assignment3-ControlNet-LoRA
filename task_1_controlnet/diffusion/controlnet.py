@@ -462,6 +462,14 @@ class ControlNetModel(ModelMixin, ConfigMixin, FromOriginalModelMixin):
         # Initialize 'controlnet' using the pretrained 'unet' model
         # NOTE: Modules to initialize: 'conv_in', 'time_proj', 'time_embedding', 'down_blocks', 'mid_block'
 
+        controlnet.conv_in.load_state_dict(unet.conv_in.state_dict())
+        controlnet.time_proj.load_state_dict(unet.time_proj.state_dict())
+        controlnet.time_embedding.load_state_dict(unet.time_embedding.state_dict())
+        for _, (down_block, unet_down_block) in enumerate(zip(controlnet.down_blocks, unet.down_blocks)):
+            down_block.load_state_dict(unet_down_block.state_dict())
+
+        controlnet.mid_block.load_state_dict(unet.mid_block.state_dict())
+
         ######## TODO (2) ########
 
         return controlnet
