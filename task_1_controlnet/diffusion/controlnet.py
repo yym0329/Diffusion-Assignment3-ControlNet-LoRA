@@ -755,8 +755,16 @@ class ControlNetModel(ModelMixin, ConfigMixin, FromOriginalModelMixin):
         # Apply zero-convolution to the residual features of each ControlNet block.
         # NOTE: Each 'controlnet_block' is used here.
 
-        down_block_res_samples = None
-        mid_block_res_sample = None
+        # down_block_res_samples = []
+        # mid_block_res_sample = []
+
+        zero_convolved_res_samples = []
+        for res_layer_act_in_layer, controlnet_downblock in zip(down_block_res_samples, self.controlnet_down_blocks):
+            zero_convolved_res_samples.append(controlnet_downblock(res_layer_act_in_layer))
+        
+        down_block_res_samples = zero_convolved_res_samples
+        mid_block_res_sample = self.controlnet_mid_block(sample)
+
 
         ######## TODO (3) ########
 
