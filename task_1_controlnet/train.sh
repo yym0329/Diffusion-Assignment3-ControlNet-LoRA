@@ -1,5 +1,5 @@
 export MODEL_DIR="runwayml/stable-diffusion-v1-5"
-export OUTPUT_DIR="./runs/controlnet_fill50k"   # output directory of each run
+export OUTPUT_DIR="./runs/controlnet_fill50k_4"   # output directory of each run
 
 accelerate launch train.py \
 --seed=0 \

@@ -3,3 +3,9 @@ task_1_controlnet/runs
 
 # Task 2
 task_2_lora/runs
+task_2_lora/outputs
+task_2_lora/sample_data/dreambooth-*
+task_2_lora/sample_data/zillioner
+# generated images
+
+

@@ -1,6 +1,6 @@
 export MODEL_NAME="CompVis/stable-diffusion-v1-4"
-export TRAIN_DATA_DIR="./sample_data/artistic-custom"
-export OUTPUT_DIR="./runs/artistic_custom"
+export TRAIN_DATA_DIR="sample_data/zillioner"
+export OUTPUT_DIR="./runs/zillioner"
 
 accelerate launch --mixed_precision="no" train_lora.py \
   --pretrained_model_name_or_path=$MODEL_NAME \
@@ -17,4 +17,5 @@ accelerate launch --mixed_precision="no" train_lora.py \
   --lr_warmup_steps=0 \
   --seed=42 \
   --checkpoints_total_limit 2 \
-  --validation_prompt="a house"
+  --validation_prompt="a man playing a video game" \
+  --train_data_dir $TRAIN_DATA_DIR

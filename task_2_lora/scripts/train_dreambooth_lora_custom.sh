@@ -6,7 +6,7 @@ accelerate launch --mixed_precision="no" train_dreambooth_lora.py \
   --pretrained_model_name_or_path=$MODEL_NAME \
   --instance_data_dir=$INSTANCE_DIR \
   --output_dir=$OUTPUT_DIR \
-  --instance_prompt="a photo of a sks cat" \
+  --instance_prompt="a man sitting" \
   --resolution=512 \
   --train_batch_size=1 \
   --gradient_accumulation_steps=1 \
@@ -15,7 +15,7 @@ accelerate launch --mixed_precision="no" train_dreambooth_lora.py \
   --lr_scheduler="constant" \
   --lr_warmup_steps=0 \
   --max_train_steps=500 \
-  --validation_prompt="A photo of sks cat in a bucket" \
+  --validation_prompt="a man walking" \
   --validation_epochs=50 \
   --checkpoints_total_limit 2 \
   --seed="0"

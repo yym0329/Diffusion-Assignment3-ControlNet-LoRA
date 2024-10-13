@@ -1238,7 +1238,7 @@ class UNet2DConditionModel(
             controlnet_added_samples = ()
             for locked_res_sample, additional_res_sample in zip(down_block_res_samples, down_block_additional_residuals):
                 locked_res_sample += additional_res_sample
-                controlnet_added_samples += (locked_res_sample,)
+                controlnet_added_samples = controlnet_added_samples + (locked_res_sample,)
             down_block_res_samples = controlnet_added_samples
         ######## TODO (4-1) ########
 
@@ -1268,7 +1268,7 @@ class UNet2DConditionModel(
             ######## TODO (4-2) ########
             # DO NOT change the code outside this part.
             # Add the residual features from the ControlNet block to 'sample'.
-            sample += mid_block_additional_residual
+            sample = sample + mid_block_additional_residual
             ######## TODO (4-2) ########
 
         # 5. up
