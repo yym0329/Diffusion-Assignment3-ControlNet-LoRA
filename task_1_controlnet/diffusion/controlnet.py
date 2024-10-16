@@ -60,8 +60,8 @@ def zero_convolution(
     # Return a zero-convolution layer,
     # with the weight & bias initialized as zeros.
     module = nn.Conv2d(in_channels, out_channels, kernel_size, stride, padding)
-    nn.init.zeros_(module.weight)
-    nn.init.zeros_(module.bias)
+    for param in module.parameters():
+        nn.init.zeros_(param)
     ######## TODO (1) ########
 
     return module
